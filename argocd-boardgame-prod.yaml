@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: boardgame-prod
+  namespace: argocd
+spec:
+  project: default
+  
+  source:
+    repoURL: https://gitlab.server.thweb.click/tthau/boardgame-gitops.git
+    targetRevision: main
+    path: base
+    helm:
+      valueFiles:
+      - ../apps/prod/values-override.yaml
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: boardgame
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
