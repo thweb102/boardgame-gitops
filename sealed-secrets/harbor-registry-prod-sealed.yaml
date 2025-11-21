@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: harbor-registry
+  namespace: boardgame
+spec:
+  encryptedData:
+    .dockerconfigjson: AgCXh0Iiq18UHtZpBIF9z9T1zQfP6bY5TgDVNAGAsR3gQJA7TId6fWcIYH349RdLp23qe8kbZIPOXolQqs7BpOB+VupgyjZVe3lyrqK9/KhgPU/vO/krHSHnUxUKQMkcVUplffCtjF1JtwhZNEtyXNprNVaEw/VCU6LesB2FEIwRJ6W/wJ1G5BmuNSqJpzEDFmIkjhCzzrYiZ0xuINBzdtEetD34oJn+TL/uYIUQMsIdwRybeuR7UBPKDEZMsCf0SfpzKsWa+T1qtND3PKOwYnU+rh2Tz97iIjfRhM3PpIQ02ZDx9W6dBTpAzyVC9iR3N6Yt7SIjQqiJRIqIneqvFdHfp+IDCZOz0NuqnOJ1y4cE8Bk5TmnVzaU/8lZ+HM2Hj+KDDuALF9IFQ5jP9EWBBLbXBciIHHXF57YAYESwVjEIRWMK5IIO47gGUg0v2R2jJgTOFlIjwECpaITLeH8EGxYvOY2WCvX4FktxneOpX8mZpzgyYZGK+5cvworsMlavMq+QVRsTJ9sFF8eCeVsShKz6o9cXM6e6BH55OtUonfaTjtu6b0P4YPefs6SFG5t3s0jroHzpaxAUNkujYTok5HxzQgMokSsvWsrkdW1Yjec7o3Vzns15jcQS+/3dO2d+QwZmZI9vw1+yTp0PYAw2cG2oE9WsCCKTh70eFOPGOYygKSB2zN37Gg9UjxC6b8oJhgqG4yc/1rXDEo4HYzGXduYKzFUMtZAquwTvcV6/o5DWC594jZgY7NaThK6gK1h+er/0wCqVMUCGcgZprS8O6A/6pnPBfJoi32pDNlD8Cse2QzkDvyj5CK6FgM2Kzoepdo5xjpi3whS87iyCNjskvp17nNhXMHqpSN4m4rQspFYNplIEfM+NOWIurmdaRm0Yojw4igThwer1DoOzb/RyQqBwmTjpdNbFSB6iOVz8DGcJTsMwBWAcnPMPGzvTwQqFjDuA3cI+IfamIfoxfT39wfbz6vXntgC3diD5Yeo3Rjixi3Q2VWvtTqX6FsvV22yy7D6jQXP/UeKPdu8BPA==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: harbor-registry
+      namespace: boardgame
+    type: kubernetes.io/dockerconfigjson
+---
