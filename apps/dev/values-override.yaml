@@ -3,7 +3,7 @@ environment: dev
 
 image:
   repository: harbor.server.thweb.click/boardgame-devsecops/app
-  tag: latest  # Jenkins will update this
+  tag: 843c83c
   pullPolicy: Always
 
 replicaCount: 1
