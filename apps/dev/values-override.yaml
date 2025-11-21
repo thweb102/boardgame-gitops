@@ -3,7 +3,7 @@ environment: dev
 
 image:
   repository: harbor.server.thweb.click/boardgame-devsecops/app
-  tag: 43f169a
+  tag: latest
   pullPolicy: Always
 
 replicaCount: 3
