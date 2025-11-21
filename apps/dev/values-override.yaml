@@ -13,7 +13,7 @@ environment: dev
 # DEPLOYMENT - Minimal resources for dev
 # ============================================================
 
-replicaCount: 1
+replicaCount: 3
 
 resources:
   limits:

@@ -7,7 +7,7 @@ spec:
   project: default
   
   source:
-    repoURL: https://gitlab.server.thweb.click/tthau/boardgame-gitops.git
+    repoURL: https://gitlab.server.thweb.click/thweb102/boardgame-gitops.git
     targetRevision: main
     path: base
     helm:
