@@ -1,0 +1,61 @@
+# Base configuration - shared across all environments
+# Environment-specific overrides in apps/{env}/values-override.yaml
+
+# Image configuration
+image:
+  repository: harbor.server.thweb.click/boardgame-devsecops/app
+  tag: latest
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: harbor-registry
+
+# Deployment
+replicaCount: 2
+
+# Resources (base - will be overridden)
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+# Probes
+livenessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 45
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 5
+
+# Application environment variables
+env:
+  springDatasourceUrl: "jdbc:h2:mem:testdb"
+  springH2ConsoleEnabled: "true"
+
+# Service
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+# Ingress (base - will be overridden)
+ingress:
+  enabled: true
+  className: nginx
+  host: boardgame.app.thweb.click
+  tls:
+    enabled: true
+    secretName: boardgame-tls
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
