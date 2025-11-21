@@ -1,19 +1,12 @@
-# ============================================================
-# DEVELOPMENT ENVIRONMENT OVERRIDES
-# ============================================================
-# This file contains only the values that differ from base.
-# Merged with values.yaml during deployment.
-#
-# Deploy command:
-#   helm upgrade boardgame-dev . -f values.yaml -f values-dev.yaml
-
+# Development environment overrides
 environment: dev
 
-# ============================================================
-# DEPLOYMENT - Minimal resources for dev
-# ============================================================
+image:
+  repository: harbor.server.thweb.click/boardgame-devsecops/app
+  tag: latest  # Jenkins will update this
+  pullPolicy: Always
 
-replicaCount: 3
+replicaCount: 1
 
 resources:
   limits:
@@ -23,31 +16,13 @@ resources:
     cpu: 50m
     memory: 128Mi
 
-# ============================================================
-# APPLICATION - Dev-specific settings
-# ============================================================
-env:
-  # H2 console enabled for debugging
-  springH2ConsoleEnabled: "true"
-  
-  # Could add dev-specific env vars here:
-  # springProfilesActive: "dev"
-  # loggingLevel: "DEBUG"
-
-
-# ============================================================
-# INGRESS - Dev subdomain without SSL
-# ============================================================
 ingress:
-  # Dev subdomain
+  enabled: true
+  className: nginx
   host: boardgame-dev.app.thweb.click
-
-  # Disable SSL in dev for faster iteration
-  # (no certificate provisioning wait time)
   tls:
-    enabled: false
+    enabled: false  # No SSL for dev (faster iteration)
+  annotations: {}
 
-  # Override annotations - remove SSL redirect
-  annotations:
-    # No cert-manager in dev
-    # nginx.ingress.kubernetes.io/ssl-redirect: "false" # Implicitly false when
+env:
+  springH2ConsoleEnabled: "true"
